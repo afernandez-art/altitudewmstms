@@ -28,13 +28,14 @@ import {
   UserCircle,
   FileText,
   DollarSign,
+  LucideIcon,
 } from "lucide-react"
 import { useState } from "react"
 
 interface NavItem {
   title: string
   href: string
-  icon: React.ComponentType<{ className?: string }>
+  icon: LucideIcon
   children?: NavItem[]
 }
 
@@ -113,14 +114,15 @@ const navigation: NavItem[] = [
 
 function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }) {
   const pathname = usePathname()
+  const hasChildren = item.children && item.children.length > 0
   const [isOpen, setIsOpen] = useState(
-    item.children?.some((child) => pathname.startsWith(child.href)) || false
+    hasChildren ? item.children!.some((child) => pathname.startsWith(child.href)) : false
   )
   
   const isActive = pathname === item.href || 
-    (item.children && pathname.startsWith(item.href) && item.href !== "/")
-  
-  const hasChildren = item.children && item.children.length > 0
+    (hasChildren && pathname.startsWith(item.href) && item.href !== "/")
+
+  const Icon = item.icon
 
   if (hasChildren) {
     return (
@@ -134,7 +136,7 @@ function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }
               : "text-muted-foreground hover:bg-muted hover:text-foreground"
           )}
         >
-          <item.icon className="h-5 w-5 flex-shrink-0" />
+          <Icon className="h-5 w-5 flex-shrink-0" />
           <span className="flex-1 text-left">{item.title}</span>
           <ChevronDown
             className={cn(
@@ -143,9 +145,9 @@ function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }
             )}
           />
         </button>
-        {isOpen && (
+        {isOpen && item.children && (
           <div className="ml-4 mt-1 space-y-1 border-l pl-3">
-            {item.children.map?((child) => (
+            {item.children.map((child) => (
               <NavItemComponent key={child.href} item={child} depth={depth + 1} />
             ))}
           </div>
@@ -164,7 +166,7 @@ function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }
           : "text-muted-foreground hover:bg-muted hover:text-foreground"
       )}
     >
-      <item.icon className="h-5 w-5 flex-shrink-0" />
+      <Icon className="h-5 w-5 flex-shrink-0" />
       <span>{item.title}</span>
     </Link>
   )
@@ -173,7 +175,6 @@ function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }
 export function Sidebar() {
   return (
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-background">
-      {/* Logo */}
       <div className="flex h-16 items-center border-b px-6">
         <Link href="/" className="flex items-center gap-2">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
@@ -183,7 +184,6 @@ export function Sidebar() {
         </Link>
       </div>
       
-      {/* Navigation */}
       <nav className="flex-1 space-y-1 overflow-y-auto p-4">
         {navigation.map((item) => (
           <NavItemComponent key={item.href} item={item} />
