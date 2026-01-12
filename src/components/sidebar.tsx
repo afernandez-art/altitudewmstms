@@ -145,7 +145,7 @@ function NavItemComponent({ item, depth = 0 }: { item: NavItem; depth?: number }
         </button>
         {isOpen && (
           <div className="ml-4 mt-1 space-y-1 border-l pl-3">
-            {item.children.map((child) => (
+            {item.children.map?((child) => (
               <NavItemComponent key={child.href} item={child} depth={depth + 1} />
             ))}
           </div>
