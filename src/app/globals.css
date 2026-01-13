@@ -1,7 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary: #135bec;
+  --background-light: #f6f6f8;
+  --background-dark: #101622;
+  --surface-dark: #1a2233;
+  --border-dark: #324467;
+}
+
 body {
-  @apply bg-slate-900 text-slate-100;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4a5d80;
+}
+
+/* Size utility for Tailwind */
+@layer utilities {
+  .size-2 {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .size-2\.5 {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+  .size-8 {
+    width: 2rem;
+    height: 2rem;
+  }
+  .size-9 {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+  .size-10 {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }
