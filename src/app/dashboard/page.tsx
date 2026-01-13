@@ -29,9 +29,7 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card">
-          <div className="card-header">
-            <h3 className="font-bold">Actividad Reciente</h3>
-          </div>
+          <div className="card-header"><h3 className="font-bold">Actividad Reciente</h3></div>
           <div className="card-body space-y-3">
             {[
               { time: "14:32", action: "ASN #1234 recibido", status: "success" },
@@ -47,19 +45,11 @@ export default function DashboardPage() {
             ))}
           </div>
         </div>
-
         <div className="card">
-          <div className="card-header">
-            <h3 className="font-bold">Estado del Sistema</h3>
-          </div>
+          <div className="card-header"><h3 className="font-bold">Estado del Sistema</h3></div>
           <div className="card-body">
             <p className="text-slate-400">Altitude WMS/TMS v2.4.0</p>
-            <p className="text-sm text-slate-500 mt-2">Stitch Design System Multi-tenant RLS Active</p>
-            <div className="mt-4 flex gap-2">
-              <span className="px-2 py-1 bg-success/20 text-success text-xs rounded">API Online</span>
-              <span className="px-2 py-1 bg-success/20 text-success text-xs rounded">DB Connected</span>
-              <span className="px-2 py-1 bg-success/20 text-success text-xs rounded">Realtime Active</span>
-            </div>
+            <p className="text-sm text-slate-500 mt-2">Stitch Design System activo</p>
           </div>
         </div>
       </div>
