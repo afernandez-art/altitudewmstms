@@ -1,94 +1,79 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
-const config = {
-  darkMode: ["class"],
+const config: Config = {
+  darkMode: "class",
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        // Custom Altitude colors
-        altitude: {
+          DEFAULT: "#135bec",
           50: "#eff6ff",
           100: "#dbeafe",
           200: "#bfdbfe",
           300: "#93c5fd",
           400: "#60a5fa",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
-          800: "#1e3a5f",
-          900: "#1e3a8a",
-          950: "#172554",
+          500: "#135bec",
+          600: "#1048c4",
+          700: "#0d369c",
+          800: "#0a2474",
+          900: "#07124c",
         },
+        background: {
+          light: "#f6f6f8",
+          dark: "#101622",
+          darker: "#0b0f1a",
+        },
+        surface: {
+          light: "#ffffff",
+          dark: "#1a2233",
+          darker: "#131b2d",
+        },
+        border: {
+          light: "#e2e8f0",
+          dark: "#232f48",
+          darker: "#1e293b",
+        },
+        text: {
+          muted: "#92a4c9",
+        },
+        status: {
+          expected: "#135bec",
+          dock: "#facc15",
+          unloading: "#fb923c",
+          received: "#4ade80",
+          closed: "#22c55e",
+          blocked: "#ef4444",
+          available: "#10b981",
+          committed: "#f59e0b",
+          pending: "#6366f1",
+          picking: "#8b5cf6",
+          packing: "#ec4899",
+          ready: "#14b8a6",
+          dispatched: "#06b6d4",
+        },
+      },
+      fontFamily: {
+        display: ["Space Grotesk", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        DEFAULT: "0.25rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      boxShadow: {
+        primary: "0 4px 14px 0 rgba(19, 91, 236, 0.25)",
+        card: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  plugins: [require("@tailwindcss/forms")],
+};
 
-export default config
+export default config;
