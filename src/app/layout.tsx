@@ -4,23 +4,20 @@ import { Sidebar } from "@/components/layout/Sidebar";
 
 export const metadata: Metadata = {
   title: "Altitude WMS/TMS",
-  description: "Sistema de Gestion de Almacen y Transporte",
+  description: "Sistema de Gestión de Almacén y Transporte",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className="dark">
-      <body className="font-body antialiased min-h-screen bg-background-dark">
+      <body className="font-body antialiased min-h-screen bg-background-light dark:bg-background-dark text-slate-900 dark:text-white">
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <header className="h-16 border-b border-border-dark bg-surface-dark flex items-center px-6 flex-shrink-0">
-              <h1 className="text-xl font-bold text-primary lg:hidden">Altitude WMS/TMS</h1>
-            </header>
-            <main className="flex-1 overflow-auto p-6 lg:p-8">
-              <div className="max-w-7xl mx-auto">{children}</div>
-            </main>
-          </div>
+          <main className="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark p-6 lg:p-8">
+            <div className="max-w-7xl mx-auto">
+              {children}
+            </div>
+          </main>
         </div>
       </body>
     </html>
